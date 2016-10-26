@@ -14,9 +14,9 @@ bot.skip_pending = True
 
 ppl_ready = {}
 ppl_ready_id = {}
-ppl_ready_0 = ['Empty','Empty','Empty','Empty','Empty',0]
-ppl_ready_id_0 = ['Empty','Empty','Empty','Empty','Empty']
-ver = 1.0
+ppl_ready_0 = ['Empty','Empty','Empty','Empty','Empty',0,[]]
+ppl_ready_id_0 = ['Empty','Empty','Empty','Empty','Empty',[]]
+ver = 1.1
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -30,12 +30,13 @@ def send_welcome(message):
 def ready_status(message):
 	global ppl_ready
 	global ppl_ready_id
-	if message.from_user.id in ppl_ready_id[message.chat.id]:
+	if message.from_user.id in ppl_ready_id[message.chat.id] or message.from_user.id in ppl_ready_id[message.chat.id][5]:
 		bot.reply_to(message, 'You can\'t be ready twice')
 	else:
 		ppl_ready[message.chat.id][5] += 1
 		if ppl_ready[message.chat.id][5] == 1:
-			bot.reply_to(message, 'You are ready\n' + str(ppl_ready[message.chat.id][5]) + ' person ready.')
+			bot.reply_to(message, 'You are ready\n' +
+				str(ppl_ready[message.chat.id][5]) + ' person ready.')
 			ppl_ready_id[message.chat.id][ppl_ready_id[message.chat.id].index('Empty')] = message.from_user.id
 			if message.from_user.username is not None:
 				ppl_ready[message.chat.id][ppl_ready[message.chat.id].index('Empty')] = message.from_user.username
@@ -49,10 +50,16 @@ def ready_status(message):
 			else:
 				ppl_ready[message.chat.id][ppl_ready[message.chat.id].index('Empty')] = message.from_user.first_name		
 		elif ppl_ready[message.chat.id][5] > 5:
-			bot.reply_to(message, 'The team is already full\n' + 'You\'re not in')
+			bot.reply_to(message, 'The team is already full\n' + 'You\'re in the queue')
+			ppl_ready_id[message.chat.id][5].append(message.from_user.id)
+			if message.from_user.username is not None:
+				ppl_ready[message.chat.id][6].append(message.from_user.username)
+			else:
+				ppl_ready[message.chat.id][6].append(message.from_user.first_name)
 			ppl_ready[message.chat.id][5] = 5
 		else:
-			bot.reply_to(message, 'You are ready\n' + str(ppl_ready[message.chat.id][5]) + ' people ready')
+			bot.reply_to(message, 'You are ready\n' +
+				str(ppl_ready[message.chat.id][5]) + ' people ready')
 			ppl_ready_id[message.chat.id][ppl_ready_id[message.chat.id].index('Empty')] = message.from_user.id
 			if message.from_user.username is not None:
 				ppl_ready[message.chat.id][ppl_ready[message.chat.id].index('Empty')] = message.from_user.username
@@ -71,12 +78,15 @@ def notready_status(message):
 		else:
 			ppl_ready[message.chat.id][ppl_ready[message.chat.id].index(message.from_user.first_name)] = 'Empty'		
 		if ppl_ready[message.chat.id][5] == 1:
-			bot.reply_to(message, 'You aren\'t ready anymore\n' + str(ppl_ready[message.chat.id][5]) + ' person ready.')
+			bot.reply_to(message, 'You aren\'t ready anymore\n' +
+				str(ppl_ready[message.chat.id][5]) + ' person ready.')
 		elif ppl_ready[message.chat.id][5] <= 0:
 			ppl_ready[message.chat.id][5] = 0
-			bot.reply_to(message, 'You aren\'t ready anymore\n' + str(ppl_ready[message.chat.id][5]) + ' people ready')
+			bot.reply_to(message, 'You aren\'t ready anymore\n' +
+				str(ppl_ready[message.chat.id][5]) + ' people ready')
 		else:
-			bot.reply_to(message, 'You aren\'t ready anymore\n' + str(ppl_ready[message.chat.id][5]) + ' people ready')
+			bot.reply_to(message, 'You aren\'t ready anymore\n' +
+				str(ppl_ready[message.chat.id][5]) + ' people ready')
 	else:
 		if ppl_ready[message.chat.id][5] == 1:
 			bot.reply_to(message, 'You weren\'t ready\n' + str(ppl_ready[message.chat.id][5]) + ' person ready')
@@ -114,11 +124,13 @@ def show_ver(message):
 def show_list(message):
 	global ppl_ready
 	global ppl_ready_id
-	bot.reply_to(message, ppl_ready[message.chat.id][0]+'\n'+
-			ppl_ready[message.chat.id][1]+'\n'+
-			ppl_ready[message.chat.id][2]+'\n'+
-			ppl_ready[message.chat.id][3]+'\n'+
-			ppl_ready[message.chat.id][4])
+	bot.reply_to(message,
+		str(ppl_ready[message.chat.id][0])+'\n'+
+		str(ppl_ready[message.chat.id][1])+'\n'+
+		str(ppl_ready[message.chat.id][2])+'\n'+
+		str(ppl_ready[message.chat.id][3])+'\n'+
+		str(ppl_ready[message.chat.id][4])
+		)
 	print(ppl_ready)
 
 @bot.message_handler(commands=['idlist'])
