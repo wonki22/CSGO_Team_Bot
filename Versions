@@ -1,0 +1,23 @@
+CSGO Team Bot
+
+---Version 0.9---
+-Fixed the problem of sending 2 messages at the same time
+-Fixed the problem of people without username
+
+---Version 0.3---
+-Fixed the problem of people changing username and registering as ready twice
+
+---Version 0.2---
+-Now the bot displays the messages in a fancier way.
+-Added a list to show the usernames of the people ready.
+-Completed functionality of /ready
+-Added the functionality of /notready
+
+---Version 0.1---
+First preliminary version of the bot.
+It isn't failproof but the simple
+mechanichs works.
+It have a counter that goes from 0 to 5
+and it says when the team is full.
+You can reset the counter and check
+its status.

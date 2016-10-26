@@ -1,0 +1,10 @@
+CSGO Team Bot
+
+Things to do:
+Different lists for diferent groups.
+Associate people with a color from the game.
+Display the changelog.
+Integration with TS.
+Fix bugs:
+-"Concurrencia"
+-Save people with no username
