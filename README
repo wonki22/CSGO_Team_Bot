@@ -1,0 +1,15 @@
+CSGO Team Bot
+
+This is a Telegram bot created in Python 2.7 that helps to organize teams inside the group chats in telegram.
+
+**IMPORTANT**
+When you start to use the bot it is necessary to write "/start".
+
+The bot has the commands:
+
+/start - Initialize the bot
+/ready - Set your status to ready
+/notready - Set your status to unready
+/status - Check how many people is ready
+/list - Check who is ready
+/ver - Check the versión of the bot
