@@ -119,12 +119,5 @@ def show_list(message):
 			ppl_ready[message.chat.id][2]+'\n'+
 			ppl_ready[message.chat.id][3]+'\n'+
 			ppl_ready[message.chat.id][4])
-	print(ppl_ready)
-
-@bot.message_handler(commands=['idlist'])
-def show_list(message):
-	global ppl_ready
-	global ppl_ready_id
-	print(ppl_ready_id)
 
 bot.polling()

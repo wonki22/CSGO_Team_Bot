@@ -1,10 +1,6 @@
 CSGO Team Bot
 
 Things to do:
-Different lists for diferent groups.
+Create a queue list which you can randomize to create XvsX matches.
 Associate people with a color from the game.
-Display the changelog.
 Integration with TS.
-Fix bugs:
--"Concurrencia"
--Save people with no username

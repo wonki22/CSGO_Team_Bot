@@ -1,5 +1,10 @@
 CSGO Team Bot
 
+---Version 1.0---Official Release Version! :D
+-Fixed the problem of having the same list for different groups.
+	Now you can use it in different groups correctly.
+-Fixed the problem of copying your username in different groups.
+
 ---Version 0.9---
 -Fixed the problem of sending 2 messages at the same time
 -Fixed the problem of people without username
@@ -15,9 +20,6 @@ CSGO Team Bot
 
 ---Version 0.1---
 First preliminary version of the bot.
-It isn't failproof but the simple
-mechanichs works.
-It have a counter that goes from 0 to 5
-and it says when the team is full.
-You can reset the counter and check
-its status.
+It isn't failproof but the simple mechanichs works.
+It have a counter that goes from 0 to 5 and it says when the team is full.
+You can reset the counter and check its status.
